@@ -60,7 +60,10 @@ a:hover { color: var(--white); }
   text-align: center;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg,rgba(10,10,10,0.85), rgba(27,27,27,0.85)), url('UI UX/assets/images/background web.png');
+  background: linear-gradient(135deg,rgba(10,10,10,0.45), rgba(27,27,27,0.45)), url('UI UX/assets/images/background web.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .hero-bg {
   position: fixed;
