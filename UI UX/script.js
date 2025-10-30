@@ -4,17 +4,38 @@ document.getElementById("scrollToAbout").onclick = () => {
 };
 
 // modal gallery
-const modal = document.getElementById("modal");
-const modalImg = document.getElementById("modalImg");
-const caption = document.getElementById("modalCaption");
-document.querySelectorAll(".thumb").forEach(t => {
-  t.onclick = () => {
-    modal.style.display = "flex";
-    modalImg.src = t.dataset.src;
-    caption.textContent = t.dataset.title;
-  };
+document.addEventListener("DOMContentLoaded", () => {
+  const thumbs = document.querySelectorAll(".thumb");
+  const modal = document.getElementById("modal");
+  const modalImg = document.getElementById("modalImg");
+  const modalCaption = document.getElementById("modalCaption");
+  const modalClose = document.getElementById("modalClose");
+
+  // Klik gambar kecil → buka modal
+  thumbs.forEach(thumb => {
+    thumb.addEventListener("click", () => {
+      const imgSrc = thumb.dataset.src;
+      const title = thumb.dataset.title;
+
+      modalImg.src = imgSrc;
+      modalCaption.textContent = title;
+      modal.style.display = "flex";
+    });
+  });
+
+  // Tombol close
+  modalClose.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  // Klik area luar gambar → tutup modal
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
 });
-document.getElementById("modalClose").onclick = () => modal.style.display = "none";
+
 
 // animate skill bars
 window.addEventListener("scroll", ()=>{
