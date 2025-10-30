@@ -214,32 +214,28 @@ a:hover { color: var(--white); }
 }
 
 /* === SKILLS === */
-.skill-grid {
+.skill-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px 20px;
 }
-.skill h4 {
+.skill-list li {
   color: var(--platinum);
-  margin-bottom: 6px;
-}
-.bar {
-  height: 8px;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.05);
+  padding: 10px 14px;
   border-radius: 8px;
-  overflow: hidden;
+  text-align: center;
+  transition: all 0.3s ease;
 }
-.bar div {
-  height: 100%;
-  width: 0;
-  background: linear-gradient(90deg,#bfbfbf,#fff);
-  box-shadow: 0 0 12px rgba(255,255,255,0.25);
-  transition: width 0.8s ease-out;
+.skill-list li:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-3px);
+
 }
-.cert {
-  margin-top: 20px;
-  color: var(--accent);
-}
+
 
 /* === CONTACT === */
 .contact-grid {
@@ -343,4 +339,38 @@ a:hover { color: var(--white); }
   .about-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
   .hero h1 { font-size: 2rem; }
+}
+
+/* === SKILLS (update versi glow) === */
+.skill-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.skill-list li {
+  color: var(--platinum);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px 16px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 0 rgba(255,255,255,0);
+  cursor: pointer;
+}
+
+/* Efek nyala waktu hover ✨ */
+.skill-list li:hover {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.25),
+              0 0 25px rgba(255, 255, 255, 0.15);
 }

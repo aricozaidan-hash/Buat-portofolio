@@ -56,3 +56,16 @@ document.getElementById("contactForm").addEventListener("submit", e=>{
   alert("Pesan terkirim (mock). Terima kasih, "+data.name+"!");
   e.target.reset();
 });
+
+// tampilkan dots sesuai nilai skill
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".dots").forEach(dots => {
+    const value = parseInt(dots.dataset.value) || 0;
+    const count = 10; // jumlah titik
+    for (let i = 1; i <= count; i++) {
+      const dot = document.createElement("span");
+      if (i <= Math.round(value / 10)) dot.classList.add("active");
+      dots.appendChild(dot);
+    }
+  });
+});
