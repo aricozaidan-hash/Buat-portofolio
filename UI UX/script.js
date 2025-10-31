@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <p id="modalCaption"></p>
     </div>
   `;
+  
   document.body.appendChild(modal);
 
   const modalImg = modal.querySelector("#modalImg");
@@ -41,6 +42,17 @@ document.addEventListener("DOMContentLoaded", () => {
     modalImg.src = galleries[index].src;
     modalCaption.textContent = galleries[index].title || "";
   };
+
+window.addEventListener("scroll", () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.body.scrollHeight - window.innerHeight;
+  const scrollProgress = Math.min(scrollTop / docHeight, 1);
+
+  // ubah variabel CSS sesuai posisi scroll
+  document.documentElement.style.setProperty("--bg-darkness", scrollProgress);
+});
+
+
 
   // Klik thumbnail → buka modal dengan galeri
   thumbs.forEach((thumb) => {

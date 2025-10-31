@@ -305,34 +305,114 @@ a:hover { color: var(--white); }
 
 
 /* === CONTACT === */
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 40px;
+.contact {
+  text-align: center;
+  padding: 100px 20px;
 }
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.08);
-  color: var(--white);
-  padding: 12px;
-  margin-top: 6px;
-  border-radius: 8px;
-  font-family: var(--font);
+
+.contact h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--platinum);
+  margin-bottom: 10px;
 }
-.contact-form button {
-  margin-top: 14px;
-}
-.contact-info p {
-  margin-bottom: 12px;
+
+.contact-subtext {
   color: var(--accent);
+  margin-bottom: 30px;
 }
-.tagline {
-  margin-top: 20px;
-  font-style: italic;
-  opacity: 0.9;
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
+
+.icon {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: var(--white);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Efek klik (ripple) */
+.icon::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.6s ease;
+}
+
+.icon:active::after {
+  width: 200%;
+  height: 200%;
+  transform: scale(1);
+  opacity: 1;
+  transition: 0s;
+}
+
+/* Hover efek warna per platform */
+.icon.instagram:hover {
+  background: linear-gradient(45deg, #fd1d1d, #833ab4, #fcb045);
+  color: #fff;
+}
+
+.icon.linkedin:hover {
+  background: #0077b5;
+  color: #fff;
+}
+
+.icon.twitter:hover {
+  background: #000;
+  color: #fff;
+}
+
+.icon.youtube:hover {
+  background: #ff0000;
+  color: #fff;
+}
+
+.icon.pinterest:hover {
+  background: #e60023;
+  color: #fff;
+}
+
+.icon.facebook:hover {
+  background: #1877f2;
+  color: #fff;
+}
+
+.icon.medium:hover {
+  background: #000000;
+  color: #fff;
+}
+
+
+/* Efek umum saat hover */
+.icon:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+}
+
+
+
 
 /* === MODAL === */
 .modal {
@@ -662,6 +742,22 @@ a:hover { color: var(--white); }
   font-size: 28px;
   cursor: pointer;
 }
+
+:root {
+  --bg-darkness: 0; /* 0 = gelap banget, 1 = terang */
+}
+
+body {
+  /* Warna berubah sesuai variabel --bg-darkness */
+  background: rgb(
+    calc(10 + var(--bg-darkness) * 40),
+    calc(10 + var(--bg-darkness) * 40),
+    calc(10 + var(--bg-darkness) * 40)
+  );
+  color: white;
+  transition: background 0.2s linear;
+}
+
 
 
 
