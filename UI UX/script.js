@@ -3,38 +3,161 @@ document.getElementById("scrollToAbout").onclick = () => {
   document.querySelector("#about").scrollIntoView({behavior:"smooth"});
 };
 
-// modal gallery
+// === MODAL GALLERY + MULTI-IMAGE CAROUSEL ===
 document.addEventListener("DOMContentLoaded", () => {
   const thumbs = document.querySelectorAll(".thumb");
-  const modal = document.getElementById("modal");
-  const modalImg = document.getElementById("modalImg");
-  const modalCaption = document.getElementById("modalCaption");
-  const modalClose = document.getElementById("modalClose");
+  if (!thumbs.length) return;
 
-  // Klik gambar kecil → buka modal
-  thumbs.forEach(thumb => {
+  // Buat modal (popup)
+  const modal = document.createElement("div");
+  modal.className = "modal";
+  modal.innerHTML = `
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <button class="modal-prev">&#10094;</button>
+      <img id="modalImg" src="" alt="">
+      <button class="modal-next">&#10095;</button>
+      <p id="modalCaption"></p>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  const modalImg = modal.querySelector("#modalImg");
+  const modalCaption = modal.querySelector("#modalCaption");
+  const modalClose = modal.querySelector(".modal-close");
+  const modalPrev = modal.querySelector(".modal-prev");
+  const modalNext = modal.querySelector(".modal-next");
+
+  let galleries = [];     // semua gambar dalam galeri aktif
+  let currentIndex = 0;
+
+  // Tampilkan gambar berdasarkan index
+  const showImage = (index) => {
+    const total = galleries.length;
+    if (index < 0) index = total - 1;
+    if (index >= total) index = 0;
+    currentIndex = index;
+
+    modalImg.src = galleries[index].src;
+    modalCaption.textContent = galleries[index].title || "";
+  };
+
+  // Klik thumbnail → buka modal dengan galeri
+  thumbs.forEach((thumb) => {
     thumb.addEventListener("click", () => {
-      const imgSrc = thumb.dataset.src;
-      const title = thumb.dataset.title;
+      const galleryData = thumb.dataset.gallery;
+      try {
+        galleries = galleryData ? JSON.parse(galleryData) : [{
+          src: thumb.dataset.src,
+          title: thumb.dataset.title || ""
+        }];
+      } catch (e) {
+        galleries = [{
+          src: thumb.dataset.src,
+          title: thumb.dataset.title || ""
+        }];
+      }
 
-      modalImg.src = imgSrc;
-      modalCaption.textContent = title;
+      currentIndex = 0;
+      showImage(currentIndex);
       modal.style.display = "flex";
+      document.body.style.overflow = "hidden";
     });
   });
 
-  // Tombol close
-  modalClose.addEventListener("click", () => {
-    modal.style.display = "none";
+  // Navigasi tombol
+  modalPrev.addEventListener("click", (e) => {
+    e.stopPropagation();
+    showImage(currentIndex - 1);
   });
 
-  // Klik area luar gambar → tutup modal
+  modalNext.addEventListener("click", (e) => {
+    e.stopPropagation();
+    showImage(currentIndex + 1);
+  });
+
+  // Tutup modal
+  modalClose.addEventListener("click", () => {
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
+  });
+
   modal.addEventListener("click", (e) => {
     if (e.target === modal) {
       modal.style.display = "none";
+      document.body.style.overflow = "auto";
+    }
+  });
+
+  // Navigasi keyboard
+  document.addEventListener("keydown", (e) => {
+    if (modal.style.display === "flex") {
+      if (e.key === "ArrowLeft") showImage(currentIndex - 1);
+      if (e.key === "ArrowRight") showImage(currentIndex + 1);
+      if (e.key === "Escape") {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+      }
     }
   });
 });
+
+// === CARD MODAL ===
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".card");
+
+  if (!cards.length) {
+    console.error("⚠️ Tidak ditemukan elemen .card di halaman!");
+    return;
+  }
+
+  // Buat modal global (hanya satu di seluruh halaman)
+  const modal = document.createElement("div");
+  modal.className = "card-modal";
+  modal.innerHTML = `
+    <div class="card-modal-content">
+      <button class="card-modal-close">&times;</button>
+      <img src="" alt="">
+      <h3 class="card-modal-title"></h3>
+      <p class="card-modal-desc"></p>
+    </div>`;
+  document.body.appendChild(modal);
+
+  const modalImg = modal.querySelector("img");
+  const modalTitle = modal.querySelector(".card-modal-title");
+  const modalDesc = modal.querySelector(".card-modal-desc");
+  const modalClose = modal.querySelector(".card-modal-close");
+
+  // Klik card → buka modal
+  cards.forEach(card => {
+    card.addEventListener("click", () => {
+      modalImg.src = card.dataset.img || "";
+      modalTitle.textContent = card.dataset.title || "Untitled Experience";
+      modalDesc.textContent = card.dataset.desc || "";
+      modal.style.display = "flex";
+      document.body.style.overflow = "hidden"; // 🔒 biar background nggak ikut scroll
+    });
+  });
+
+  // Klik tombol close → tutup modal
+  modalClose.addEventListener("click", () => {
+    modal.style.display = "none";
+    document.body.style.overflow = "auto"; // 🔓 aktifkan scroll lagi
+  });
+
+  // Klik area luar modal → tutup
+  modal.addEventListener("click", e => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+      document.body.style.overflow = "auto";
+    }
+  });
+});
+
+// toggle dark mode
+document.getElementById("darkModeToggle").onclick = ()=>{
+  document.body.classList.toggle("dark-mode");
+};
 
 
 // animate skill bars
@@ -69,3 +192,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+

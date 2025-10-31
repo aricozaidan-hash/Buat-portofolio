@@ -45,35 +45,52 @@
         </p>
         <p><strong>Location:</strong> Yogyakarta, Indonesia</p>
         <p><strong>Email:</strong> <a href="mailto:aricorizky4@gmail.com">aricorizky4@gmail.com</a></p>
-        <a class="btn-outline" href="UI UX/assets/files/CV_Arico_Rizky.pdf" target="_blank">Download CV</a>
+        <a class="btn-outline" href="UI UX\UI UX\assets\files\CV_Arico_Rizky.pdf" target="_blank">Download CV</a>
       </div>
     </div>
   </section>
 
   <!-- ===== EXPERIENCE ===== -->
-  <section id="experience" class="section">
-    <div class="container">
-      <h2>Experience</h2>
-      <div class="cards">
-        <article class="card">
-          <h3>Statistical Agent – UPNVY Statistics Corner</h3>
-          <p>Conducted data analysis, public outreach, and infographic publication with BPS Sleman.</p>
-        </article>
-        <article class="card">
-          <h3>Vice Chairman – Nogotirto Islamic Youth Forum</h3>
-          <p>Led youth programs, coordinated events, and managed community data for social projects.</p>
-        </article>
-        <article class="card">
-          <h3>Media Creative – KSPM UPNVY (I-Vest 2025)</h3>
-          <p>Designed infographics, edited media releases, and managed creative branding.</p>
-        </article>
-        <article class="card">
-          <h3>Project Holder – Novo Club by Paragon Corp</h3>
-          <p>Led social campaigns and educational events with over 300 participants.</p>
-        </article>
-      </div>
+<section id="experience" class="section">
+  <div class="container">
+    <h2>Experience</h2>
+    <div class="cards">
+
+      <article class="card"
+        data-img="assets/images/AgenStatistik.jpg" src="assets/images/AgenStatistik.jpg"
+        data-title="Statistical Agent – UPNVY Statistics Corner"
+        data-desc="janpu diedit">
+        <h3>Statistical Agent – UPNVY Statistics Corner</h3>
+        <p>Conducted data analysis, public outreach, and infographic publication with BPS Sleman.</p>
+      </article>
+
+      <article class="card"
+        data-img="assets/images/FRIN.png" src="assets/images/FRIN.png"
+        data-title="Vice Chairman – Nogotirto Islamic Youth Forum"
+        data-desc="diedit.">
+        <h3>Vice Chairman – Nogotirto Islamic Youth Forum</h3>
+        <p>Led youth programs, coordinated events, and managed community data for social projects.</p>
+      </article>
+
+      <article class="card"
+        data-img="assets/images/ivest.jpg"
+        data-title="Media Creative – KSPM UPNVY (I-Vest 2025)"
+        data-desc="diedit.">
+        <h3>Media Creative – KSPM UPNVY (I-Vest 2025)</h3>
+        <p>Designed infographics, edited media releases, and managed creative branding.</p>
+      </article>
+
+      <article class="card"
+        data-img="assets/images/NOVOCLUB.jpg" src="assets/images/NOVOCLUB.jpg"
+        data-title="Project Holder – Novo Club by Paragon Corp"
+        data-desc="diedit">
+        <h3>Project Holder – Novo Club by Paragon Corp</h3>
+        <p>Led social campaigns and educational events with over 300 participants.</p>
+      </article>
+
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- ===== PROJECTS ===== -->
   <section id="projects" class="section projects">
@@ -94,11 +111,21 @@
       
 
       <!-- Sertifikat -->
-      <div class="thumb" data-src="assets/images/Sertifikat_IBM.jpg" data-title="IBM Certificate">
-        <img src="assets/images/Sertifikat_IBM.jpg" alt="IBM Certificate">
+      <div class="thumb"
+  data-gallery='[
+    {"src":"assets/images/Sertifikat_IBM.jpg","title":"IBM Certificate"},
+    {"src":"assets/images/AWS@.jpg","title":"AWS Cloud Practitioner"},
+    {"src":"assets/images/AWSDD.jpg","title":"AWS Cloud Practitioner"},
+    {"src":"assets/images/awscloud3.jpg","title":"AWS Cloud Practitioner"},
+    {"src":"assets/images/UXmyskill.jpg","title":"MySkill UX Design"},
+    {"src":"assets/images/ACOUNTING.png","title":"MySkill Accounting"},
+    {"src":"assets/images/groupprojek.jpg","title":"Best Group"},
+    {"src":"assets/images/NOVOCLUB.jpg","title":"NovoCLub by Paragon Corp"}
+  ]'>
+<img src="assets/images/groupprojek.jpg" alt="Best Group">
         <span>Certification</span>
       </div>
-
+      
       <!-- Riset -->
       <div class="thumb" data-src="assets/images/Riset.jpg" data-title="Research Using Stata">
         <img src="assets/images/Riset.jpg" alt="Research">
@@ -153,14 +180,16 @@
     </div>
   </section>
 
-  <!-- ===== IMAGE MODAL ===== -->
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <button id="modalClose" class="modal-close">×</button>
-    <img id="modalImg" src="" alt="">
-    <p id="modalCaption"></p>
+<!-- ===== IMAGE MODAL ===== -->
+<div id="expModal" class="exp-modal">
+  <div class="exp-modal-content">
+    <button id="expModalClose" class="exp-modal-close">×</button>
+    <img id="expModalImg" src="" alt="">
+    <h3 id="expModalTitle"></h3>
+    <p id="expModalDesc"></p>
   </div>
 </div>
+
 
 <!-- ===== FOOTER ===== -->
   <footer class="footer">
