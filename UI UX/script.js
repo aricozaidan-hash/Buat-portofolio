@@ -96,8 +96,6 @@ window.addEventListener("scroll", () => {
   document.documentElement.style.setProperty("--bg-darkness", scrollProgress);
 });
 
-
-
   // Klik thumbnail → buka modal dengan galeri
   thumbs.forEach((thumb) => {
     thumb.addEventListener("click", () => {
@@ -144,7 +142,7 @@ window.addEventListener("scroll", () => {
       document.body.style.overflow = "auto";
     }
   });
-
+  
   // Navigasi keyboard
   document.addEventListener("keydown", (e) => {
     if (modal.style.display === "flex") {
@@ -247,5 +245,19 @@ document.addEventListener("DOMContentLoaded", () => {
       dots.appendChild(dot);
     }
   });
+
+  // yang buat toggle menu
+document.addEventListener("DOMContentLoaded", function () {
+  const menuToggle = document.getElementById("menuToggle");
+  const menuItems = document.getElementById("menuItems");
+
+  console.log("✅ Script aktif");
+
+  menuToggle.addEventListener("click", function () {
+    console.log("🟢 Tombol ditekan");
+    menuItems.classList.toggle("active");
+  });
+});
+
 });
 
