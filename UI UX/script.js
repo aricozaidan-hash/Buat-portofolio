@@ -3,6 +3,50 @@ document.getElementById("scrollToAbout").onclick = () => {
   document.querySelector("#about").scrollIntoView({behavior:"smooth"});
 };
 
+// === HERO TYPING EFFECT ===
+document.addEventListener("DOMContentLoaded", () => {
+  const typingEl = document.getElementById("typing");
+  if (!typingEl) return;
+
+  // Kalimat-kalimat yang akan diketik
+  const texts = [
+    "Transforming data into insights through design and innovation.",
+    "I'm interested in design and AI technology.",
+    "Listening to music, podcasts and watching movies are my hobbies."
+  ];
+
+  let textIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function type() {
+    const currentText = texts[textIndex];
+    const displayedText = currentText.substring(0, charIndex);
+    typingEl.textContent = displayedText;
+
+    if (!isDeleting && charIndex < currentText.length) {
+      charIndex++;
+      setTimeout(type, 70); // kecepatan ngetik
+    } else if (isDeleting && charIndex > 0) {
+      charIndex--;
+      setTimeout(type, 40); // kecepatan hapus
+    } else {
+      if (!isDeleting) {
+        // Tunggu sebentar sebelum mulai hapus
+        isDeleting = true;
+        setTimeout(type, 1200);
+      } else {
+        // Lanjut ke teks berikutnya
+        isDeleting = false;
+        textIndex = (textIndex + 1) % texts.length;
+        setTimeout(type, 500);
+      }
+    }
+  }
+
+  type();
+});
+
 // === MODAL GALLERY + MULTI-IMAGE CAROUSEL ===
 document.addEventListener("DOMContentLoaded", () => {
   const thumbs = document.querySelectorAll(".thumb");
