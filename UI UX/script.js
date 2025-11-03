@@ -155,6 +155,29 @@ window.addEventListener("scroll", () => {
     }
   });
 });
+  document.addEventListener("DOMContentLoaded", function () {
+  const menuToggle = document.getElementById("menuToggle");
+  const menuItems = document.getElementById("menuItems");
+
+  // Toggle buka/tutup saat tombol diklik
+  menuToggle.addEventListener("click", (e) => {
+    e.stopPropagation(); // biar gak langsung nutup
+    menuItems.classList.toggle("active");
+  });
+
+  // Klik di luar menu otomatis nutup
+  document.addEventListener("click", (e) => {
+    if (!menuItems.contains(e.target) && !menuToggle.contains(e.target)) {
+      menuItems.classList.remove("active");
+    }
+  });
+
+  // Saat scroll juga otomatis nutup
+  window.addEventListener("scroll", () => {
+    menuItems.classList.remove("active");
+  });
+});
+
 
 // === CARD MODAL ===
 document.addEventListener("DOMContentLoaded", () => {
@@ -245,19 +268,6 @@ document.addEventListener("DOMContentLoaded", () => {
       dots.appendChild(dot);
     }
   });
-
-  // yang buat toggle menu
-document.addEventListener("DOMContentLoaded", function () {
-  const menuToggle = document.getElementById("menuToggle");
-  const menuItems = document.getElementById("menuItems");
-
-  console.log("✅ Script aktif");
-
-  menuToggle.addEventListener("click", function () {
-    console.log("🟢 Tombol ditekan");
-    menuItems.classList.toggle("active");
-  });
-});
 
 });
 
