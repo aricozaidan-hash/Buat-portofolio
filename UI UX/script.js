@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
   type();
 });
 
+
 // === MODAL GALLERY + MULTI-IMAGE CAROUSEL ===
 document.addEventListener("DOMContentLoaded", () => {
   const thumbs = document.querySelectorAll(".thumb");
@@ -76,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let galleries = [];     // semua gambar dalam galeri aktif
   let currentIndex = 0;
 
+  
   // Tampilkan gambar berdasarkan index
   const showImage = (index) => {
     const total = galleries.length;
@@ -95,6 +97,7 @@ window.addEventListener("scroll", () => {
   // ubah variabel CSS sesuai posisi scroll
   document.documentElement.style.setProperty("--bg-darkness", scrollProgress);
 });
+
 
   // Klik thumbnail → buka modal dengan galeri
   thumbs.forEach((thumb) => {

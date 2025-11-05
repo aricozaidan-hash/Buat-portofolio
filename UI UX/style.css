@@ -119,6 +119,14 @@ a:hover { color: var(--white); }
   padding: 8px 12px;
   border-radius: 6px;
 }
+.download-btn {
+  display: inline-block;         /* biar bisa diatur posisinya */
+  margin-top: 40px;              /* jarak dari elemen atas */
+  margin-left: 0;                /* pastikan mulai dari kiri */
+  text-align: left;              /* teks tetap rata kiri */
+  align-self: flex-start;        /* kalau di dalam flex container */
+}
+
 
 /* === HERO === */
 .hero {
@@ -180,6 +188,11 @@ a:hover { color: var(--white); }
   font-weight: 700;
   line-height: 1.3;
   margin-bottom: 0.8rem;
+  white-space: normal;       
+  text-align: center;
+  line-height: 1.2;
+  overflow: visible;          /* biar huruf nggak kepotong */
+  font-size: clamp(1.5rem, 4vw, 2.8rem); /* otomatis sesuai ukuran layar */
   color: var(--platinum);
   text-shadow: 0 0 12px rgba(255,255,255,0.05);
 }
@@ -285,6 +298,20 @@ a:hover { color: var(--white); }
 
 
 /* === EXPERIENCE === */
+.card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px; /* jarak antara judul dan deskripsi */
+  color: var(--platinum);
+  line-height: 1.4;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: var(--accent);
+  line-height: 1.6;
+  text-align: justify; /* biar rapi rata kiri-kanan */
+}
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
@@ -774,7 +801,7 @@ a:hover { color: var(--white); }
   max-width: 600px;
   width: 100%;
   color: #fff;
-  text-align: center;
+  text-align: justify;
   box-shadow: 0 0 25px rgba(255,255,255,0.15);
   animation: fadeIn 0.3s ease;
 }
