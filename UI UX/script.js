@@ -98,7 +98,6 @@ window.addEventListener("scroll", () => {
   document.documentElement.style.setProperty("--bg-darkness", scrollProgress);
 });
 
-
   // Klik thumbnail → buka modal dengan galeri
   thumbs.forEach((thumb) => {
     thumb.addEventListener("click", () => {

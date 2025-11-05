@@ -107,7 +107,7 @@ a:hover { color: var(--white); }
   100% { filter: hue-rotate(360deg); }
 }
 
-/* Tambahan sentuhan glow lembut (opsional, bisa dihapus kalau mau lebih minimalis) */
+/* Tambahan sentuhan glow lembut */
 .nav a:hover {
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
 }
@@ -141,7 +141,7 @@ a:hover { color: var(--white); }
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed; /* ⬅️ Biar background diam saat scroll */
+  background-attachment: fixed; /*  Biar background diam saat scroll */
   padding: 0 20px;
 }
 .hero-bg {
